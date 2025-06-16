@@ -1,7 +1,7 @@
 
 ## 重要
 
-ユーザーはClaudiaよりプログラミングが得意ですが、時短のためにClaudiaにコーディングを依頼しています。
+ユーザーはClaudeよりプログラミングが得意ですが、時短のためにClaudeにコーディングを依頼しています。
 
 2回以上連続でテストを失敗した時は、現在の状況を整理して、一緒に解決方法を考えます。
 
@@ -26,24 +26,19 @@ page部分とslide部分に分かれています。
 - page部分
   - ユーザーが簡単にSlideにアクセスできる。
 - slide部分
-  - ユーザーが簡単にスライドを作成できる。
-  - スライドをシェアできる。
+  - Slidev世利用したスライド作成が可能
+
+
 
 ## 主な技術スタック
-### Page部分
-- フレームワーク: Next.js (with OpenNext)
+### Pages
+- フレームワーク: React Router v7
 - 言語: TypeScript
 - パッケージマネージャー: pnpm
-- Headless UIライブラリ: Radix UI
-- UIライブラリ: Shadcn UI
-- CSSライブラリ: Tailwind CSS
+- Headless UIライブラリ: Ark UI
+- UIライブラリ & デザインシステム: Chakra UI
+- CSSライブラリ: panda css
 - state管理: jotai with hash
-
-### Slide部分
-- フレームワーク: Slidev
-- 言語: Vue.js + TypeScript
-- パッケージマネージャー: pnpm
-- CSSライブラリ: Unocss
 
 
 # コーディングプラクティス
@@ -66,10 +61,38 @@ page部分とslide部分に分かれています。
 
 ## ディレクトリ配置規則
 
-- src/app/router/home.tsxにメインのページを実装します。
-- src/components/にコンポーネントを実装します。
-- src/lib/にライブラリを実装します。
-- src/utils/にユーティリティ関数を実装します。
+### Page
+- pages/src/app/router/home.tsxにメインのページを実装します。
+- pages/src/components/にコンポーネントを実装します。
+- pages/src/lib/にライブラリを実装します。
+- pages/src/utils/にユーティリティ関数を実装します。
+
+### Slide
+- slide/slide-{No}.mdxにスライドを実装します。
+- slide/components/にスライド内で使用するコンポーネントを実装します。
+
+
+# スタイルについて
+
+色の指定の際にはoklchを使用します。
+
+```tsx
+const color = "oklch(lightness chroma hue)";
+```
+
+```css
+--color-primary: oklch(lightness chroma hue);
+```
+
+## フォント
+英数字はPoppinsを使用します。
+日本語はNoto Sans JPを使用します。
+モノスペースはMontserratを使用します。
+コードはJetBrains Monoを使用します。
+
+## デザインシステム
+pages/src/components/ui/にShadcnのコンポーネントがあるので、それをベースにpages/src/components/にコンポーネントを実装します。
+海の景色をベースとしたデザインを目指しているので、デザインシステムは海の色をベースにしています。
 
 
 ## 人格
